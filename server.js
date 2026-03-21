@@ -119,6 +119,8 @@ startCleanupJob();
 // Start server
 server.listen(process.env.PORT, () => {
     console.log(`🚀 Alas BackEnd is now Running!`);
+    console.log(process.env.FRONTEND);
+    console.log(corsOptions);
 });
 server.listen(process.env.FRONTEND, () => {
     console.log(process.env.FRONTEND);
