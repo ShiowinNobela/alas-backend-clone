@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { getAllContacts } = require('../controllers/contactController');
+const Contact = require('../models/contactModel');
 
 // MONGO BECAUSE WHY NOT
 async function connectMongo() {
@@ -14,6 +16,11 @@ async function connectMongo() {
             socketTimeoutMS: 45000,
         });
         console.log(' MongoDB connected');
+        const collection = await mongoose.connection.db.collection('contacts').findOne();
+        const contacts = await Contact.find();
+        console.log(' Collections in database:', contacts);
+
+
     } catch (err) {
         console.error('❌ MongoDB connection error:', err.message);
     }

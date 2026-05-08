@@ -1,4 +1,4 @@
-export async function up(knex) {
+exports.up = async function(knex) {
     await knex.schema.alterTable('user_claimed_rewards', (table) => {
         table
             .integer('claimed_coupon_id')
@@ -8,7 +8,7 @@ export async function up(knex) {
     });
 }
 
-export async function down(knex) {
+exports.down = async function(knex) {
     await knex.schema.alterTable('user_claimed_rewards', (table) => {
         table.dropColumn('claimed_coupon_id');
     });

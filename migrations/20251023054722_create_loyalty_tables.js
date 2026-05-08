@@ -1,4 +1,4 @@
-export async function up(knex) {
+exports.up = async function(knex) {
     await knex.schema.createTable('loyalty_rewards', (table) => {
         table.increments('id').primary();
         table.integer('required_orders').notNullable();
@@ -24,7 +24,7 @@ export async function up(knex) {
     });
 }
 
-export async function down(knex) {
+exports.down = async function(knex) {
     await knex.schema.dropTableIfExists('user_loyalty_progress');
     await knex.schema.dropTableIfExists('user_claimed_rewards');
     await knex.schema.dropTableIfExists('loyalty_rewards');
